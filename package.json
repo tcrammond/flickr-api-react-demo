@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bad-words": "^1.6.1",
+    "bulma": "^0.7.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
