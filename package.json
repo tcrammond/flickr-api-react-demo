@@ -4,9 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "axios-jsonp": "^1.0.2",
     "bad-words": "^1.6.1",
-    "jsonp": "^0.2.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
