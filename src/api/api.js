@@ -2,14 +2,15 @@ import axios from 'axios';
 import Filter from 'bad-words';
 
 const filter = new Filter();
-const API_URL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search';
+const API_URL = 'https://api.flickr.com/services/rest/';
 
 const DEFAULT_PARAMS = {
   api_key: process.env.REACT_APP_FLICKR_API_KEY,
   safe_search: 1,
+  per_page: 20,
   format: 'json',
   nojsoncallback: 1,
-  extras: 'owner_name,description'
+  extras: 'owner_name,description,tags'
 };
 
 /**
@@ -18,14 +19,25 @@ const DEFAULT_PARAMS = {
  * @return Promise
  */
 export function fetchPhotos (tags = '') {
+  // Search does not support parameterless searching, in which case we fall back to getRecent.
+  const method = !!tags
+    ? 'flickr.photos.search'
+    : 'flickr.photos.getRecent'
+
   const params = {
     ...DEFAULT_PARAMS,
-    tags: tags
+    method,
+    tags
   };
   
   return axios
     .get(API_URL, { params })
     .then(({ data }) => {
+      
+      if (process.env.NODE_ENV === 'development') {
+        console.log(data);
+      }
+
       if (data.stat === 'fail' || !data.photos) {
         throw new Error('Flickr request failed.');
       }
