@@ -5,6 +5,7 @@ import './App.css';
 import { fetchPhotos } from './../../api/api';
 
 import Photo from '../Photo/Photo';
+import Loading from '../common/Loading/Loading';
 
 class App extends Component {
 
@@ -63,7 +64,7 @@ class App extends Component {
 
               <div className="PhotoStream columns is-multiline">
                 {this.state.isLoadingPhotos
-                  ? <div>Loading...</div>
+                  ? <Loading />
                   : this.renderPhotos()
                 }
               </div>
