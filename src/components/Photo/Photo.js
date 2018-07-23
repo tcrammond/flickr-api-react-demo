@@ -6,14 +6,14 @@ function Photo ({ photo }) {
   return (
     <div className="Photo">
       <figure>
-        <img src="https://placekitten.com/480/360" alt="Meow"/>
+        <img src={photo.photoURL || 'https://placekitten.com/480/360'} alt="Meow"/>
       </figure>
 
       <div className="Photo__Headline">
-        <a>
+        <a href={photo.photoURL} target="_blank">
           <h2 className="Photo__Title">{photo.title || 'Unknown'}</h2>
         </a>
-        <span className="Photo__Author">by <a>{photo.ownername}</a></span>
+        <span className="Photo__Author">by <a href={photo.authorURL} target="_blank">{photo.ownername}</a></span>
       </div>
 
       <div className="Photo__Description">
