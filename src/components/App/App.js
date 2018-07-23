@@ -46,10 +46,16 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <header className="AppHeader">
-          <h1 className='title'>Flickr Photo Stream</h1>
+        <header className="hero is-primary">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title">
+                Flickr Photo Stream
+              </h1>
+            </div>
+          </div>
         </header>
-        
+
         <section className="section">
           <div className="container">
             <div className="Content">
