@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './App.css';
 
 // TODO: configure absolute paths from src/
@@ -6,6 +7,7 @@ import { fetchPhotos } from './../../api/api';
 
 import Photo from '../Photo/Photo';
 import Loading from '../common/Loading/Loading';
+import Search from '../common/Search/Search';
 
 class App extends Component {
 
@@ -61,6 +63,8 @@ class App extends Component {
         <section className="section">
           <div className="container">
             <div className="Content">
+
+              <Search onSearch={console.log} />
 
               <div className="PhotoStream columns is-multiline">
                 {this.state.isLoadingPhotos
