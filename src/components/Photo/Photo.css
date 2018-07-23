@@ -1,0 +1,53 @@
+.Photo {
+  border: 1px solid lightslategray;
+  border-radius: 12px;
+}
+
+.Photo__Headline {
+  max-width: 100%;
+  margin-bottom: .5rem;
+}
+
+.Photo__Title {
+  font-size: 1.2rem;
+
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Photo__Author {
+  display: block;
+  
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.Photo__Description {
+  margin-bottom: 1rem;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Photo__Tags {
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+.Photo__Tag {
+  display: inline-block;
+  padding: 2px 5px;
+  margin-bottom: .1rem;
+
+  background: lightskyblue;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+.Photo__Tag:not(:last-child) {
+  margin-right: .25rem;
+}

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Filter from 'bad-words';
+import striptags from 'striptags';
 
 const filter = new Filter();
 const API_URL = 'https://api.flickr.com/services/rest/';
@@ -12,6 +13,10 @@ const DEFAULT_PARAMS = {
   nojsoncallback: 1,
   extras: 'owner_name,description,tags'
 };
+
+if (!process.env.REACT_APP_FLICKR_API_KEY) {
+  console.error('No Flickr API key found. Please refer to documentation.');
+}
 
 /**
  * Returns latest photos from public Flickr feed.
@@ -35,7 +40,7 @@ export function fetchPhotos (tags = '') {
     .then(({ data }) => {
       
       if (process.env.NODE_ENV === 'development') {
-        console.log(data);
+        console.log('Fetched photos ', data);
       }
 
       if (data.stat === 'fail' || !data.photos) {
@@ -47,7 +52,11 @@ export function fetchPhotos (tags = '') {
       // In this demo we're filtering out photos that _might_ be NSFW. The "safe" flag is
       // set by the user and not entirely reliable.
       return photos
-        .filter((item) => !filter.isProfane(item.title));
+        .filter((item) => !filter.isProfane(item.title))
+        .map((item) => {
+          item.description._content = striptags(item.description._content);
+          return item;
+        });
     });
 };
 
