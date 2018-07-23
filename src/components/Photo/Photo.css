@@ -5,6 +5,11 @@
   border-radius: 12px;
 }
 
+.Photo figure {
+  /* Reduce load in layout flicker */
+  min-height: 100px;
+}
+
 .Photo__Headline {
   max-width: 100%;
   margin-bottom: .5rem;
