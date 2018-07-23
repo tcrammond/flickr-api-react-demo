@@ -2,6 +2,10 @@ import React from 'react';
 
 import './Photo.css';
 
+/**
+ * Displays one photo card with title, author, description and tags.
+ * Links are expected to be already constructed on the photo prop.
+ */
 function Photo ({ photo }) {
   return (
     <div className="Photo">
@@ -28,7 +32,7 @@ function Photo ({ photo }) {
 function PhotoTags ({ tags }) {
   return (
     <div className="Photo__Tags">
-      {(tags.split('n') || []).map((tag, i) => <span key={`tag_${i}`} className="Photo__Tag">{tag}</span>)}
+      {(tags.split(' ') || []).map((tag, i) => <span key={`tag_${i}`} className="Photo__Tag">{tag}</span>)}
     </div>
   );
 }

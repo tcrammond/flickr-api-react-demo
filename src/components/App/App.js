@@ -37,7 +37,7 @@ class App extends Component {
     return this.state.photos.map((photo, i) => {
       return (
         <div key={`photo_${i}`} className="column is-one-quarter">
-          <Photo key={`photo-${i}`} photo={photo} />
+          <Photo photo={photo} />
         </div>
       );
     })
@@ -46,6 +46,7 @@ class App extends Component {
   render () {
     return (
       <div className="App">
+
         <header className="hero is-primary">
           <div className="hero-body">
             <div className="container">
@@ -59,14 +60,14 @@ class App extends Component {
         <section className="section">
           <div className="container">
             <div className="Content">
-              <div className="PhotoStream columns is-multiline">
 
+              <div className="PhotoStream columns is-multiline">
                 {this.state.isLoadingPhotos
                   ? <div>Loading...</div>
                   : this.renderPhotos()
                 }
               </div>
-              
+
             </div>
           </div>
         </section>
