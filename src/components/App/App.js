@@ -20,20 +20,31 @@ class App extends Component {
   }
   
   componentDidMount () {
-    try {
-      fetchPhotos()
-        .then((photos) => {
-          this.setState({
-            photos,
-            isLoadingPhotos: false
+    this.searchPhotos();
+  }
+
+  searchPhotos = (tags = '') => {
+    this.setState({
+      isLoadingPhotos: true
+    }, () => {
+      try {
+        // Tags are in fact entered with spaces in between in the Flickr UI, so let's allow for that here too.
+        const tagsParam = tags.replace(' ', ',');
+
+        fetchPhotos(tagsParam)
+          .then((photos) => {
+            this.setState({
+              photos,
+              isLoadingPhotos: false
+            });
           });
+      } catch (e) {
+        this.setState({
+          isLoadingPhotos: false
         });
-    } catch (e) {
-      this.setState({
-        isLoadingPhotos: false
-      });
-      alert('Could not retrieve photos. Please check your credentials.');
-    }
+        alert('Could not retrieve photos. Please check your credentials.');
+      }
+    }) 
   }
 
   renderPhotos () {
@@ -64,7 +75,7 @@ class App extends Component {
           <div className="container">
             <div className="Content">
 
-              <Search onSearch={console.log} />
+              <Search onSearch={this.searchPhotos} />
 
               <div className="PhotoStream columns is-multiline">
                 {this.state.isLoadingPhotos
