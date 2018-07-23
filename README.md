@@ -12,6 +12,8 @@ Install dependencies
 
 Acquire a Flickr API key.
 
+**Note: only run this locally. Don't expose your Flickr API key somewhere else.**
+
 ## Development
 
 Run `REACT_APP_FLICKR_API_KEY=your-key-here npm run start`.
@@ -22,6 +24,9 @@ Run `REACT_APP_FLICKR_API_KEY=your-key-here npm run build`.
 
 Builds the app for production to the build folder.
 
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To quickly serve this on a local server (requires recent node LTS)
 
-The build is minified and the filenames include the hashes.
+```
+npm install -g serve
+serve -s build
+```
